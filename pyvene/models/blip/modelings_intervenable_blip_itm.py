@@ -75,6 +75,7 @@ blip_itm_type_to_dimension_mapping = {
     "cross_attention_input": ("image_text_hidden_size",),
     "itm_input": ("image_text_hidden_size",),
     "itm_output": (2,), # TODO: not sure how to specify this dim as it's not an attr in BlipConfig
+    "text_config.num_attention_heads": ("text_config.num_attention_heads",),
 }
 
 

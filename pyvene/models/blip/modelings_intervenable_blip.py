@@ -91,6 +91,7 @@ blip_type_to_dimension_mapping = {
     ),
     "cross_attention_output": ("image_text_hidden_size",),
     "cross_attention_input": ("image_text_hidden_size",),
+    "text_config.num_attention_heads": ("text_config.num_attention_heads",),
 }
 
 
