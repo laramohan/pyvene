@@ -33,6 +33,10 @@ blip_itm_type_to_module_mapping = {
         "text_encoder.encoder.layer[%s].attention.output.dense",
         CONST_INPUT_HOOK,
     ),
+    "head_attention_value_output": (
+        "text_encoder.encoder.layer[%s].attention.output.dense",
+        CONST_INPUT_HOOK, (split_head_and_permute, "n_head")
+    ),
     "attention_output": (
         "text_encoder.encoder.layer[%s].attention.output",
         CONST_OUTPUT_HOOK,
@@ -68,6 +72,7 @@ blip_itm_type_to_dimension_mapping = {
     "cross_attention_input": ("image_text_hidden_size",),
     "itm_input": ("image_text_hidden_size",),
     "itm_output": (2,), # TODO: not sure how to specify this dim as it's not an attr in BlipConfig
+    "n_head": ("text_config.num_attention_heads"),
 }
 
 
