@@ -75,7 +75,7 @@ blip_itm_type_to_dimension_mapping = {
     "cross_attention_input": ("image_text_hidden_size",),
     "itm_input": ("image_text_hidden_size",),
     "itm_output": (2,), # TODO: not sure how to specify this dim as it's not an attr in BlipConfig
-    "num_attention_heads": ("text_config.num_attention_heads",),
+    "text_config.num_attention_heads": ("text_config.num_attention_heads",),
 }
 
 
@@ -85,7 +85,7 @@ for k, v in blip_itm_type_to_module_mapping.items():
     blip_itm_wrapper_type_to_module_mapping[k] = (
         v[0].replace("text_encoder", "model_text_enc"), # NOTE: don't fully understand why we do this
         v[1],
-    )
+    ) + v[2:]
 
 
 blip_itm_wrapper_type_to_dimension_mapping = blip_itm_type_to_dimension_mapping

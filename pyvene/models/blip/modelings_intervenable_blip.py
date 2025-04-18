@@ -101,7 +101,7 @@ for k, v in blip_type_to_module_mapping.items():
     blip_wrapper_type_to_module_mapping[k] = (
         v[0].replace("text_encoder", "model_text_enc"),
         v[1],
-    )
+    ) + v[2:]
 
 
 blip_wrapper_type_to_dimension_mapping = blip_type_to_dimension_mapping
