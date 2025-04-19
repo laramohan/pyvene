@@ -79,7 +79,7 @@ blip_type_to_dimension_mapping = {
     "mlp_output": ("image_text_hidden_size",),
     "mlp_input": ("image_text_hidden_size",),
     "attention_value_output": (
-        "image_text_hidden_size/text_config.num_attention_heads",
+        "image_text_hidden_size",
     ),
     "head_attention_value_output": (
         "image_text_hidden_size/text_config.num_attention_heads",
