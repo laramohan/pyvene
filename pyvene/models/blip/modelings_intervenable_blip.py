@@ -42,6 +42,20 @@ blip_type_to_module_mapping = {
         CONST_OUTPUT_HOOK,
     ),
     "attention_input": ("text_encoder.encoder.layer[%s].attention", CONST_INPUT_HOOK),
+    "cross_attention_value_output": (
+        "text_encoder.encoder.layer[%s].crossattention.output.dense",
+        CONST_INPUT_HOOK,
+    ),
+    "head_cross_attention_value_output": (
+        "text_encoder.encoder.layer[%s].crossattention.output.dense",
+        CONST_INPUT_HOOK, (split_head_and_permute, "num_attention_heads")
+    ),
+    "cross_attention_output": (
+        "text_encoder.encoder.layer[%s].crossattention.output",
+        CONST_OUTPUT_HOOK,
+    ),
+    "cross_attention_input": ("text_encoder.encoder.layer[%s].crossattention", CONST_INPUT_HOOK),
+    
     # 'block_input': ("text_decoder.bert.encoder.layer[%s]", CONST_INPUT_HOOK),
     # 'block_output': ("text_decoder.bert.encoder.layer[%s]", CONST_INPUT_HOOK),
     # 'mlp_activation': ("text_decoder.bert.encoder.layer[%s].intermediate.dense", CONST_OUTPUT_HOOK),
@@ -87,6 +101,9 @@ blip_type_to_dimension_mapping = {
     "attention_output": ("image_text_hidden_size",),
     "attention_input": ("image_text_hidden_size",),
     "cross_attention_value_output": (
+        "image_text_hidden_size",
+    ),
+    "head_cross_attention_value_output": (
         "image_text_hidden_size/text_config.num_attention_heads",
     ),
     "cross_attention_output": ("image_text_hidden_size",),
