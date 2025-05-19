@@ -41,7 +41,14 @@ blip_itm_type_to_module_mapping = {
         "text_encoder.encoder.layer[%s].attention.output",
         CONST_OUTPUT_HOOK,
     ),
+    "head_attention_output": (
+        "text_encoder.encoder.layer[%s].attention.output",
+        CONST_INPUT_HOOK, (split_head_and_permute, "num_attention_heads")
+    ),
     "attention_input": ("text_encoder.encoder.layer[%s].attention", CONST_INPUT_HOOK),
+    "head_attention_input": ("text_encoder.encoder.layer[%s].attention", 
+        CONST_INPUT_HOOK, (split_head_and_permute, "num_attention_heads")
+    ),
     "itm_output": ("itm_head", CONST_OUTPUT_HOOK),
     "cross_attention_value_output": (
         "text_encoder.encoder.layer[%s].crossattention.output.dense",
@@ -84,7 +91,11 @@ blip_itm_type_to_dimension_mapping = {
         "image_text_hidden_size/text_config.num_attention_heads",
     ),
     "attention_output": ("image_text_hidden_size",),
+    "head_attention_output": (
+        "image_text_hidden_size/text_config.num_attention_heads",
+    ),
     "attention_input": ("image_text_hidden_size",),
+    "head_attention_input": ("image_text_hidden_size/text_config.num_attention_heads",),
     "cross_attention_value_output": (
         "image_text_hidden_size",
     ),
