@@ -43,7 +43,7 @@ blip_itm_type_to_module_mapping = {
     ),
     "head_attention_output": (
         "text_encoder.encoder.layer[%s].attention.output",
-        CONST_INPUT_HOOK, (split_head_and_permute, "num_attention_heads")
+        CONST_OUTPUT_HOOK, (split_head_and_permute, "num_attention_heads")
     ),
     "attention_input": ("text_encoder.encoder.layer[%s].attention", CONST_INPUT_HOOK),
     "head_attention_input": ("text_encoder.encoder.layer[%s].attention", 
