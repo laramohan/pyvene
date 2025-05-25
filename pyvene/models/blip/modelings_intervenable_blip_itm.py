@@ -67,6 +67,7 @@ blip_itm_type_to_module_mapping = {
         CONST_OUTPUT_HOOK, (split_head_and_permute, "num_attention_heads")
     ),
     "cross_attention_input": ("text_encoder.encoder.layer[%s].crossattention", CONST_INPUT_HOOK),
+    "head_cross_attention_input": ("text_encoder.encoder.layer[%s].crossattention", CONST_INPUT_HOOK, (split_head_and_permute, "num_attention_heads")),
 }
 
 
@@ -105,6 +106,7 @@ blip_itm_type_to_dimension_mapping = {
     "cross_attention_output": ("image_text_hidden_size",),
     "head_cross_attention_output": ("image_text_hidden_size/text_config.num_attention_heads",),
     "cross_attention_input": ("image_text_hidden_size",),
+    "head_cross_attention_input": ("image_text_hidden_size/text_config.num_attention_heads",),
     "itm_input": ("image_text_hidden_size",),
     "itm_output": (2,), # TODO: not sure how to specify this dim as it's not an attr in BlipConfig
     "num_attention_heads": ("text_config.num_attention_heads",),
